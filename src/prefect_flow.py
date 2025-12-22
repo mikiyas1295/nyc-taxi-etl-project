@@ -241,3 +241,57 @@ def transform_data():
     print(f"Transformation complete. Parquet saved at {STAGING_DIR}")
     return STAGING_DIR
 
+
+# =====================================================
+# TASK: LOAD + INSPECT DUCKDB (WINDOWS SAFE)
+# =====================================================
+@task(
+    name="Load & Inspect DuckDB",
+    retries=2,
+    retry_delay_seconds=5,
+    cache_key_fn=cache_daily_key,
+    cache_expiration=timedelta(days=1),
+)
+def load_and_inspect_duckdb(parquet_path):
+    if os.path.exists(DUCKDB_PATH):
+        os.remove(DUCKDB_PATH)
+
+    with duckdb.connect(DUCKDB_PATH) as con:
+        parquet_glob = os.path.join(parquet_path, "*.parquet").replace("\\", "/")
+
+        con.execute("""
+            CREATE TABLE taxi_weather AS
+            SELECT * FROM read_parquet(?)
+        """, [parquet_glob])
+
+        rows = con.execute("SELECT COUNT(*) FROM taxi_weather").fetchone()[0]
+        cols = len(con.execute("PRAGMA table_info(taxi_weather)").fetchall())
+
+        print("\nDuckDB Load Complete")
+        print(f"Rows: {rows} | Columns: {cols}")
+        print("Sample rows:")
+
+        for row in con.execute("SELECT * FROM taxi_weather LIMIT 5").fetchall():
+            print(row)
+
+# =====================================================
+# MAIN FLOW
+# =====================================================
+@flow(name="NYC Taxi ETL Pipeline", log_prints=True)
+def main_flow():
+    parquet_path = transform_data()
+    load_and_inspect_duckdb(parquet_path)
+    print("ETL flow completed successfully!")
+
+# =====================================================
+# ENTRY POINT (DEPLOYMENT-READY)
+# =====================================================
+if __name__ == "__main__":
+    print(f"\nRunning ETL flow manually at {datetime.now()}")
+    main_flow()
+
+    print("\nFor scheduled execution using Prefect:")
+    print("1️⃣ prefect deployment build prefect_flow.py:main_flow -n 'daily_nyc_taxi_etl' --cron '0 9 * * *'")
+    print("2️⃣ prefect deployment apply main_flow-deployment.yaml")
+    print("3️⃣ prefect deployment run 'daily_nyc_taxi_etl'")
+
