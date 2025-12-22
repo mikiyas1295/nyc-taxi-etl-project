@@ -106,16 +106,16 @@ def cache_daily_key(context, parameters):
 def transform_data():
     spark = get_spark()
 
-    # ----------------------------------------------------------
+    # -----------------------------------------------------------------
     # LOAD DATA
-    # ---------------------------------------------------------
+    # ----------------------------------------------------------------
     df_taxi = spark.read.parquet(TAXI_PARQUET)
     df_zone = spark.read.option("header", True).csv(ZONE_CSV)
     df_weather_raw = spark.read.option("multiline", "true").json(WEATHER_JSON)
 
-    # ------------------------------------------------
+    # ---------------------------------------------------------------
     # CLEAN TAXI DATA
-    # ---------------------------------------------
+    # ------------------------------------------------------------
     df_taxi_clean = (
         df_taxi
         .withColumn("pickup_datetime", to_timestamp("tpep_pickup_datetime"))
@@ -141,9 +141,9 @@ def transform_data():
         .filter((col("trip_duration_min") > 0) & (col("trip_duration_min") <= 1440))
     )
 
-    # -------------------------
+    # -----------------------------------------------------------
     # GEO ENRICHMENT
-    # -------------------------
+    # -----------------------------------------------------------
     df_zone = (
         df_zone
         .withColumnRenamed("LocationID", "PULocationID")
@@ -159,9 +159,9 @@ def transform_data():
         .withColumn("is_weekend", dayofweek("pickup_datetime").isin([1, 7]))
     )
 
-    # -------------------------
+    # ------------------------------------------------------------------------------
     # WEATHER ENRICHMENT
-    # -------------------------
+    # -----------------------------------------------------------------------------
     df_weather = (
         df_weather_raw
         .select(explode("days").alias("day"))
@@ -197,9 +197,9 @@ def transform_data():
         .withColumnRenamed("weather_hour", "pattern_hour")
     )
 
-    # -------------------------
+    # --------------------------------------------------------------------------------
     # FINAL JOIN
-    # -------------------------
+    # --------------------------------------------------------------------------------
     df_final = (
         df_taxi_geo
         .join(
