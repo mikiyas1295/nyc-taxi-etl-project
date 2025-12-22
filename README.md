@@ -376,6 +376,7 @@ This design closely mirrors **real-world production data engineering workflows**
 ---
 
 
+<img width="1384" height="933" alt="Screenshot 2025-12-16 005300" src="https://github.com/user-attachments/assets/c06a453f-6321-4029-9117-d3efad69e256" />
 
 ## 📁🗂️ Repository Structure
 
