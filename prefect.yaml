@@ -1,0 +1,36 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: etl-project
+prefect-version: 3.6.5
+
+# Build section allows you to manage and build docker images
+build: null
+
+# Push section allows you to manage if and how this project is uploaded to remote locations
+push: null
+
+# Pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.set_working_directory:
+    directory: ./  # Relative path makes it portable
+
+# The deployments section allows you to provide configuration for deploying flows
+deployments:
+- name: daily_nyc_taxi_etl
+  version: null
+  tags: []
+  concurrency_limit: null
+  description: null
+  entrypoint: prefect_flow.py:main_flow
+  parameters: {}
+  work_pool:
+    name: local-pool
+    work_queue_name: null
+    job_variables: {}
+  schedules:
+  - cron: 0 9 * * *
+    timezone: null
+    day_or: true
