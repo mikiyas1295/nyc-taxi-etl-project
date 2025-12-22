@@ -1,20 +1,38 @@
 
-
----
-
 # 🚕📊 NYC Taxi & Weather Analytics ETL Pipeline
 
+## 📌 Project Overview
+
+The **NYC Taxi & Weather Analytics ETL Pipeline** is an end-to-end **data engineering and analytics project** designed to process, integrate, and analyze large-scale **New York City taxi trip data** enriched with **real-time and historical weather information**.
+
+The project focuses on building a **scalable, resilient, and analytics-ready ETL pipeline** using modern data engineering tools and best practices. It demonstrates how heterogeneous data sources can be transformed into a unified, high-quality dataset that supports advanced analytics and business intelligence use cases.
+
+At the core of the pipeline, **Apache PySpark** is used for distributed data processing, enabling efficient handling of millions of taxi trip records. The pipeline performs critical transformations such as data cleaning, schema standardization, timestamp normalization, and feature engineering at scale. **DuckDB** serves as the analytical database, providing fast, SQL-based querying optimized for OLAP workloads. **Prefect** orchestrates the entire workflow, ensuring reliability through scheduling, task dependencies, retries, and monitoring.
+
+By integrating taxi transportation data with weather conditions, the project enables deeper insights into how environmental factors affect taxi demand, trip duration, congestion patterns, and revenue trends. The final curated dataset is designed to be easily consumed by **Business Intelligence (BI) tools** such as Power BI, Tableau, or Looker, supporting interactive dashboards and data-driven decision-making.
+
+This project reflects real-world data engineering practices and is suitable for portfolio presentation, academic research, or production-level analytics systems.
+
 ---
 
-## 📌✨ Project Overview
+## 🎯 Project Objectives
 
-This project designs and implements a **scalable, resilient ETL pipeline** that integrates large-scale **NYC taxi transportation data** with **real-time weather information**.
+The key objectives of this project are as follows:
 
-Using **⚡ Apache PySpark** for distributed data processing, **🦆 DuckDB** for high-performance analytics, and **🧭 Prefect** for orchestration, the pipeline extracts, transforms, and loads heterogeneous data sources into an **analytics-ready database**.
+- **Build a scalable ETL pipeline** capable of processing large volumes of structured transportation data using distributed computing techniques.
 
-The final curated dataset is visualized using a **📊 Business Intelligence dashboard** (Power BI / Tableau / Looker) to support **data-driven decision-making**.
+- **Integrate multiple data sources** by combining NYC taxi trip records with external weather data to create a unified analytical dataset.
 
----
+- **Ensure data quality and consistency** through robust data cleaning, validation, and transformation processes, including handling missing values and schema alignment.
+
+- **Enable high-performance analytics** by storing transformed data in DuckDB, optimized for fast analytical queries and aggregations.
+
+- **Automate and orchestrate workflows** using Prefect to manage scheduling, task dependencies, retries, logging, and monitoring.
+
+- **Support business intelligence and decision-making** by preparing analytics-ready datasets suitable for dashboards and reporting tools.
+
+- **Demonstrate industry-standard data engineering practices**, including modular pipeline design, layered data architecture, version control, and clear documentation.
+
 
 ## 🎯📈 Business Problem
 
