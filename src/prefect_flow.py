@@ -1,6 +1,6 @@
 """
 prefect_flow.py
--------------------
+----------------------------------------------------------
 Student project submission ETL pipeline:
 
 - Extract NYC Taxi data (Parquet)
@@ -21,14 +21,16 @@ import sys
 import urllib.request
 from datetime import timedelta, datetime
 
+import duckdb
+
 from prefect import flow, task
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
     col, when, avg, coalesce, lit, explode,
     to_timestamp, to_date, hour, dayofweek,
     unix_timestamp, lower, round
-)
-import duckdb
+    )
+
 
 # ==========================================================================
 # CONFIGURATION
@@ -85,7 +87,7 @@ def get_spark():
         .config("spark.sql.session.timeZone", "America/New_York")
         .config("spark.driver.memory", "4g")
         .getOrCreate()
-    )
+            )
 
 # =============================================================================
 # PREFECT CACHE (DAILY)
