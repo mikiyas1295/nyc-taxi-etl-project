@@ -460,6 +460,6 @@ Overall, this project showcases:
 - ⚙️ Robust **ETL and orchestration design**
 - 📊 Analytics-ready **data modeling**
 - 🧠 Practical **business insight generation**
-- 📚 Clear and professional **documentation**
+  
 
 
