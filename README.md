@@ -302,7 +302,7 @@ BI Dashboard (Power BI)
 
 ### dbt Models Implemented
 
-#### 1️⃣ Staging Model
+#### 1️Staging Model
 
 A staging model was created to standardize and expose cleaned data from DuckDB.
 
