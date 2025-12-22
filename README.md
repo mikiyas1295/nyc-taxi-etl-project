@@ -193,9 +193,10 @@ prefect worker start --pool local-pool
 ---
 
 testing screenshots of the terminal
-<img width="1460" height="427" alt="Screenshot 2025-12-15 045758" src="https://github.com/user-attachments/assets/20da8ce7-886f-466b-808c-4ae6cf4981ea" />
-<img width="1316" height="403" alt="Screenshot 2025-12-15 044211" src="https://github.com/user-attachments/assets/c984eba5-0228-441f-b8e1-2605040ecb75" />
 
+<img width="1460" height="427" alt="Screenshot 2025-12-15 045758" src="https://github.com/user-attachments/assets/590f319d-e6a1-4723-a525-124c518f1994" />
+
+<img width="1460" height="427" alt="Screenshot 2025-12-15 045758" src="https://github.com/user-attachments/assets/9face45c-10d6-48ed-a7b7-c4c0b2b66029" />
 
 ### 6️⃣ 🔍 Monitoring
 
