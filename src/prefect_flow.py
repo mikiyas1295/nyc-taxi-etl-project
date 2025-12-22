@@ -106,16 +106,16 @@ def cache_daily_key(context, parameters):
 def transform_data():
     spark = get_spark()
 
-    # -------------------------
+    # ----------------------------------------------------------
     # LOAD DATA
-    # -------------------------
+    # ---------------------------------------------------------
     df_taxi = spark.read.parquet(TAXI_PARQUET)
     df_zone = spark.read.option("header", True).csv(ZONE_CSV)
     df_weather_raw = spark.read.option("multiline", "true").json(WEATHER_JSON)
 
-    # -------------------------
+    # ------------------------------------------------
     # CLEAN TAXI DATA
-    # -------------------------
+    # ---------------------------------------------
     df_taxi_clean = (
         df_taxi
         .withColumn("pickup_datetime", to_timestamp("tpep_pickup_datetime"))
