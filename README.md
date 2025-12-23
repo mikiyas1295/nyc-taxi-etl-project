@@ -449,7 +449,7 @@ Overall, this project showcases:
 - 🏗️ Strong **data engineering architecture**
 - ⚙️ Robust **ETL and orchestration design**
 - 📊 Analytics-ready **data modeling**
-- 🧠 Practical **business insight generation**
+- 🧠 Practical **business insight generation.**
   
 
 
