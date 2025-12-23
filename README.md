@@ -246,17 +246,6 @@ The DuckDB database is connected to a BI tool to visualize:
 ![Temperature Impact on Demand](bi/dashboard_screenshots/temperature_impact.png)
 ```
 
-✅ GitHub will render these images automatically once the files exist.
-
----
-Perfect, Yonas 👍
-You **do NOT need to remove or reduce anything** from your README.
-Below is a **clean, polished, copy-paste ready Markdown section** that fits **exactly before** the **📁🗂️ Repository Structure** section.
-
-I only **refined wording, headings, and formatting** — the meaning and content remain **100% yours**.
-
----
-
 ## 🔧📐 dbt (Data Build Tool) Integration
 
 ### Overview
