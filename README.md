@@ -245,7 +245,7 @@ The DuckDB database is connected to a BI tool to visualize:
 ![Weekday vs Weekend Demand](bi/dashboard_screenshots/weekday_weekend.png)
 ![Temperature Impact on Demand](bi/dashboard_screenshots/temperature_impact.png)
 ```
-
+Screenshots are available in the dashboard folder.
 ## 🔧📐 dbt (Data Build Tool) Integration
 
 ### Overview
